@@ -7,15 +7,20 @@ namespace GoneHome
     public class Player : MonoBehaviour
     {
         public float movementSpeed = 10f;
+        public float maxVelocity = 10f;
+        public GameObject deathParticles;
 
         private Rigidbody rigid;
         private Transform cam;
+        private Vector3 spawnPoint;
         // Use this for initialization
         void Start()
         {
             rigid = GetComponent<Rigidbody>();
-
             cam = Camera.main.transform;
+
+            // Record starting position
+            spawnPoint = transform.position;
         }
 
         // Update is called once per frame
@@ -28,14 +33,32 @@ namespace GoneHome
 
             // Rotate input to face direction of Camera (flat on surface)
             inputDir = Quaternion.AngleAxis(cam.eulerAngles.y, Vector3.up) * inputDir;
-            
-            // Copy position
-            Vector3 position = transform.position;
-            // Offset to the new position
-            position += inputDir * movementSpeed * Time.deltaTime;
-            // Apply new position to rigidbody
-            rigid.MovePosition(position);
-       
-        }   
-     }
+
+            // Add force to rigidbody
+            rigid.AddForce(inputDir * movementSpeed);
+            // Copy velocity into smaller variable
+            Vector3 vel = rigid.velocity;
+            // Check if vel's magnitude is greater than max velocity
+            if (vel.magnitude > maxVelocity)
+            {
+                // Cap the velocity
+                vel = vel.normalized * maxVelocity;
+            }
+            // Apply the new velocity to rigidbody
+            rigid.velocity = vel;
+        }
+
+        public void Reset()
+        {
+            // Spawn death particles where we reset
+            Instantiate(deathParticles, transform.position, transform.rotation);
+            // Reset position of the player to start position
+            transform.position = spawnPoint;
+            // Reset the velocity
+            rigid.velocity = Vector3.zero;
+
+        }
+
+
+    }
 }
