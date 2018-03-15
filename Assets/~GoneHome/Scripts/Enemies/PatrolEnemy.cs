@@ -14,9 +14,13 @@ namespace GoneHome
         private Transform[] waypoints;
         private int currentIndex = 0;
 
+        private Vector3 spawnPoint;
+
         // Use this for initialization
         void Start()
         {
+            spawnPoint = transform.position;
+
             int length = waypointGroup.childCount;
             waypoints = new Transform[length];
             // for (initialization;  condition; iteration)
@@ -25,6 +29,7 @@ namespace GoneHome
                 waypoints[i] = waypointGroup.GetChild(i);
             }
 
+           
         }
 
         // Update is called once per frame
@@ -54,6 +59,11 @@ namespace GoneHome
             {
                 currentIndex = 0;
             }
+        }
+        public void Reset()
+        {
+            currentIndex = 0;
+            transform.position = spawnPoint;
         }
     }
 }
