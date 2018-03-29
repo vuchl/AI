@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.02.14" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextobjectid="1">
+<map version="1.0" tiledversion="2018.02.14" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextobjectid="41">
  <tileset firstgid="1" source="SunnyLand.tsx"/>
  <layer name="Tile Layer 1" width="100" height="100">
   <data encoding="csv">
@@ -313,4 +313,22 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup name="GroundCollision">
+  <object id="15" x="432" y="784" width="32" height="16"/>
+  <object id="16" x="480" y="784" width="48" height="16"/>
+  <object id="25" x="912" y="848">
+   <polyline points="0,0 -272,272 -544,0 0,0"/>
+  </object>
+  <object id="30" x="768" y="784" width="48" height="16"/>
+  <object id="36" x="832" y="784" width="32" height="16"/>
+  <object id="37" x="816" y="784" width="16"/>
+  <object id="38" x="464" y="784" width="16"/>
+ </objectgroup>
+ <objectgroup name="PlatformCollision">
+  <object id="19" x="796" y="796.333" width="0.333333"/>
+ </objectgroup>
+ <objectgroup name="LadderCollision">
+  <object id="20" x="816" y="768" width="16" height="64"/>
+  <object id="21" x="464" y="768" width="16" height="64"/>
+ </objectgroup>
 </map>
