@@ -17,7 +17,13 @@ namespace TowerDefence
         {
             health = maxHealth;
         }
-
+        void OnDestroy()
+        {
+            if(healthSider)
+            {
+                Destroy(healthSider.gameObject);
+            }
+        }
         Vector3 GetHealthBarPos()
         {
             Camera cam = Camera.main;
@@ -42,6 +48,10 @@ namespace TowerDefence
             // 
             health -= damage;
             //
+            if(healthSider)
+            {
+                healthSider.value = health / maxHealth;
+            }
             if (health <= 0)
             {
                 //
