@@ -11,7 +11,7 @@ namespace GoneHome
 
         public UnityEvent onDeath;
 
-        //Gets called whrn Triggered by other object
+        //Gets called when Triggered by other object
         void OnTriggerEnter(Collider other)
         {
             // If it bleeds
